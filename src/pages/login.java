@@ -19,21 +19,24 @@ public class login extends JDialog{
         setModal(true);
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setVisible(true);
+
 
         //hva som skjer når vi trykker på knapper, hvor de sender oss feks.
         btnUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //skriv kode her
+                System.out.println("Velkommen til user siden\n");
+                new userMainPage(parent);
             }
         });
 
         btnAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //skriv inn kode her
+                System.out.println("Velkommen til admin side\n");
+                new adminMainPage(parent);
             }
         });
+        setVisible(true);
     }
 }
