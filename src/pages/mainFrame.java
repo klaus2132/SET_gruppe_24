@@ -34,14 +34,37 @@ public class mainFrame extends JFrame {
         showPage("Login");
     }
 
+    //hvis en side og legge til den riktige siden i historien
     public void showPage(String pageName) {
         CardLayout cl = (CardLayout) getContentPane().getLayout();
+
+        //bare legg til hvis siden ikke er der allerede og hvis historen er tom
+        if (pageHistory.isEmpty() || !pageHistory.peek().equals(pageName)) {
+            pageHistory.push(pageName);
+            System.out.println(pageHistory);
+        }
         cl.show(getContentPane(), pageName);
+        System.out.println("Navigerte side: " + pageName);
     }
 
+    //navigerer til forrige side
     public void goBack() {
-        CardLayout cl = (CardLayout) getContentPane().getLayout();
-        cl.previous(getContentPane());
+        if (!pageHistory.isEmpty()) {
+            //fjerner nåværende side fra history
+            pageHistory.pop();
+
+            if (!pageHistory.isEmpty()) {
+                //ser på øverste elementet
+                String previousPage = pageHistory.peek();
+                System.out.println("Navigerte til: " + previousPage);
+                CardLayout cl = (CardLayout) getContentPane().getLayout();
+                cl.show(getContentPane(), previousPage);
+            } else {
+                System.out.println("Er ikke mulig å gå lenger bak");
+            }
+        } else {
+            System.out.println("Er ikke mulig å gå lenger bak");
+        }
     }
 
 }

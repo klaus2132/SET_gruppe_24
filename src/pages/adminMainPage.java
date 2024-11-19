@@ -16,13 +16,12 @@ public class adminMainPage extends JPanel{
         setLayout(new BorderLayout());
         add(adminPanel);
 
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton("Tilbake");
         add(btnBack, BorderLayout.SOUTH);
 
-        // When "Back" is clicked, navigate back to the previous page
         btnBack.addActionListener(e -> {
             if (parent instanceof mainFrame) {
-                ((mainFrame) parent).goBack(); // Use CardLayout.previous() to go back
+                ((mainFrame) parent).goBack();
             }
         });
 
@@ -31,7 +30,6 @@ public class adminMainPage extends JPanel{
             if (parent instanceof mainFrame) {
                 ((mainFrame) parent).showPage("Unit Page");
             }
-            System.out.println("Unit siden åpnet");
         });
 
         //åpner shortcut siden
@@ -39,7 +37,6 @@ public class adminMainPage extends JPanel{
             if (parent instanceof mainFrame) {
                 ((mainFrame) parent).showPage("Shortcut Page");
             }
-            System.out.println("Shortcut siden åpnet");
         });
     }
 }

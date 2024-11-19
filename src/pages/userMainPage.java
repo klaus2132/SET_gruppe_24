@@ -15,12 +15,20 @@ public class userMainPage extends JPanel{
         setLayout(new BorderLayout());
         add(userPanel);
 
+        JButton btnBack = new JButton("Tilbake");
+        add(btnBack, BorderLayout.SOUTH);
+
+        btnBack.addActionListener(e -> {
+            if (parent instanceof mainFrame) {
+                ((mainFrame) parent).goBack();
+            }
+        });
+
         //åpner unit page
         enheterButton.addActionListener(e -> {
             if (parent instanceof mainFrame) {
                 ((mainFrame) parent).showPage("Unit Page");
             }
-            System.out.println("Unit siden åpnet");
         });
 
         //åpner shortcut siden
@@ -28,7 +36,6 @@ public class userMainPage extends JPanel{
             if (parent instanceof mainFrame) {
                 ((mainFrame) parent).showPage("Shortcut Page");
             }
-            System.out.println("Shortcut siden åpnet");
         });
     }
 }

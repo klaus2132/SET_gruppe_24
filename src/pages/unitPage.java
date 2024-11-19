@@ -21,6 +21,15 @@ public class unitPage extends JPanel{
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel.add(scrollPane);
 
+        JButton btnBack = new JButton("Tilbake");
+        add(btnBack, BorderLayout.SOUTH);
+
+        btnBack.addActionListener(e -> {
+            if (parent instanceof mainFrame) {
+                ((mainFrame) parent).goBack();
+            }
+        });
+
 
         add(panel);
 
