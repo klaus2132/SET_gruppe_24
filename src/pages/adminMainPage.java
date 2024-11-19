@@ -20,6 +20,7 @@ public class adminMainPage extends JDialog{
         setModal(true);
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         btnUnits.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -27,13 +28,14 @@ public class adminMainPage extends JDialog{
 
             }
         });
+
         btnShortcuts.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Åpner Snarveier");
+                new shortcutsPage(parent);
             }
         });
-
 
         setVisible(true);
     }
@@ -45,3 +47,4 @@ public class adminMainPage extends JDialog{
     }
 
 }
+
