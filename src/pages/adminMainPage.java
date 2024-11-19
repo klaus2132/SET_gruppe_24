@@ -2,10 +2,14 @@ package pages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class adminMainPage extends JDialog{
     private JPanel adminPanel;
     private JLabel adminHeading;
+    private JButton btnShortcuts;
+    private JButton btnUnits;
 
     public adminMainPage(JFrame parent){
         super(parent);
@@ -15,6 +19,20 @@ public class adminMainPage extends JDialog{
         setModal(true);
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        btnUnits.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Åpner Enheter");
+            }
+        });
+        btnShortcuts.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Åpner Snarveier");
+            }
+        });
+
+
         setVisible(true);
     }
 
@@ -23,4 +41,6 @@ public class adminMainPage extends JDialog{
 
         adminMainPage frame = new adminMainPage(null);
     }
+
 }
+
