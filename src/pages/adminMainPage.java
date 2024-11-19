@@ -10,6 +10,7 @@ public class adminMainPage extends JDialog{
     private JLabel adminHeading;
     private JButton btnShortcuts;
     private JButton btnUnits;
+    private JButton addUnitButton;
 
     public adminMainPage(JFrame parent){
         super(parent);
