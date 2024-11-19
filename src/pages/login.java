@@ -5,38 +5,36 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class login extends JDialog{
-
+public class login extends JPanel {
     private JButton btnUser;
-    private JPanel loginpanel;
     private JButton btnAdmin;
+    private JPanel loginpanel;
 
-    public login(JFrame parent){
-        super(parent);
-        setTitle("Login");
-        setContentPane(loginpanel);
-        setMinimumSize(new Dimension(800,500));
-        setModal(true);
-        setLocationRelativeTo(parent);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    public login(JFrame parent) {
+        setLayout(new BorderLayout());
+        add(loginpanel);
 
-
-        //hva som skjer når vi trykker på knapper, hvor de sender oss feks.
         btnUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Velkommen til user siden\n");
-                new userMainPage(parent);
+                parent.getContentPane().removeAll();
+                parent.getContentPane().add(new userMainPage(parent));
+                parent.revalidate();
+                parent.repaint();
             }
         });
 
         btnAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Velkommen til admin side\n");
-                new adminMainPage(parent);
+                System.out.println("Velkommen til admin siden\n");
+                parent.getContentPane().removeAll();
+                parent.getContentPane().add(new adminMainPage(parent));
+                parent.revalidate();
+                parent.repaint();
             }
         });
-        setVisible(true);
     }
 }
+

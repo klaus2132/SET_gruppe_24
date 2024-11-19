@@ -15,6 +15,7 @@ public class Main {
         Speaker kitchenSpeaker = new Speaker(5, "Kitchen speakers", 80);
         Thermostat bedroomThermostat = new Thermostat(6, "Bedroom thermostat", 20);
 
-        login frame = new login(null);
+        mainFrame frame = new mainFrame();
+        frame.setVisible(true);
     }
 }
