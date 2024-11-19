@@ -40,5 +40,10 @@ public class UnitManager {
             }
         }
     }
+
+    //get enheter
+    public ArrayList<Unit> getUnits() {
+        return units;
+    }
 }
 

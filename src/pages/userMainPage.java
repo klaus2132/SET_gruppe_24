@@ -23,6 +23,8 @@ public class userMainPage extends JDialog{
         enheterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                unitPage page = new unitPage();
+                page.setVisible(true);
                 System.out.println("Åpner Enheter");
             }
         });
