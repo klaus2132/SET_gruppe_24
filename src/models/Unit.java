@@ -1,7 +1,6 @@
 package models;
 
 public abstract class Unit {
-
     private int id;
     private String name;
     private boolean status;
@@ -13,7 +12,7 @@ public abstract class Unit {
         this.status = false;
     }
 
-    //gettere settere
+    //gettere og settere
     public int getId() {
         return id;
     }
@@ -33,3 +32,4 @@ public abstract class Unit {
     //abstrakte klasser
     public abstract void displayDetails();
 }
+
