@@ -16,27 +16,30 @@ public class adminMainPage extends JPanel{
         setLayout(new BorderLayout());
         add(adminPanel);
 
+        JButton btnBack = new JButton("Back");
+        add(btnBack, BorderLayout.SOUTH);
 
-        btnUnits.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Åpner Enheter");
-                parent.getContentPane().removeAll();
-                parent.getContentPane().add(new unitPage(parent));
-                parent.revalidate();
-                parent.repaint();
+        // When "Back" is clicked, navigate back to the previous page
+        btnBack.addActionListener(e -> {
+            if (parent instanceof mainFrame) {
+                ((mainFrame) parent).goBack(); // Use CardLayout.previous() to go back
             }
         });
 
-        btnShortcuts.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Åpner Snarveier");
-                parent.getContentPane().removeAll();
-                parent.getContentPane().add(new shortcutsPage(parent));
-                parent.revalidate();
-                parent.repaint();
+        //åpner unit page
+        btnUnits.addActionListener(e -> {
+            if (parent instanceof mainFrame) {
+                ((mainFrame) parent).showPage("Unit Page");
             }
+            System.out.println("Unit siden åpnet");
+        });
+
+        //åpner shortcut siden
+        btnShortcuts.addActionListener(e -> {
+            if (parent instanceof mainFrame) {
+                ((mainFrame) parent).showPage("Shortcut Page");
+            }
+            System.out.println("Shortcut siden åpnet");
         });
     }
 }

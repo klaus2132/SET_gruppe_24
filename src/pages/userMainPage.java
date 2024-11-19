@@ -15,25 +15,20 @@ public class userMainPage extends JPanel{
         setLayout(new BorderLayout());
         add(userPanel);
 
-        enheterButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Åpner Enheter");
-                parent.getContentPane().removeAll();
-                parent.getContentPane().add(new unitPage(parent));
-                parent.revalidate();
-                parent.repaint();
+        //åpner unit page
+        enheterButton.addActionListener(e -> {
+            if (parent instanceof mainFrame) {
+                ((mainFrame) parent).showPage("Unit Page");
             }
+            System.out.println("Unit siden åpnet");
         });
-        snarveiButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Åpner Snarveier");
-                parent.getContentPane().removeAll();
-                parent.getContentPane().add(new shortcutsPage(parent));
-                parent.revalidate();
-                parent.repaint();
+
+        //åpner shortcut siden
+        snarveiButton.addActionListener(e -> {
+            if (parent instanceof mainFrame) {
+                ((mainFrame) parent).showPage("Shortcut Page");
             }
+            System.out.println("Shortcut siden åpnet");
         });
     }
 }

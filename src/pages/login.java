@@ -14,26 +14,20 @@ public class login extends JPanel {
         setLayout(new BorderLayout());
         add(loginpanel);
 
-        btnUser.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Velkommen til user siden\n");
-                parent.getContentPane().removeAll();
-                parent.getContentPane().add(new userMainPage(parent));
-                parent.revalidate();
-                parent.repaint();
+
+        btnUser.addActionListener(e -> {
+            if(parent instanceof mainFrame){
+                ((mainFrame) parent).showPage("User Page");
             }
+            System.out.println("User siden åpnet");
         });
 
-        btnAdmin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Velkommen til admin siden\n");
-                parent.getContentPane().removeAll();
-                parent.getContentPane().add(new adminMainPage(parent));
-                parent.revalidate();
-                parent.repaint();
+
+        btnAdmin.addActionListener(e -> {
+            if (parent instanceof mainFrame) {
+                ((mainFrame) parent).showPage("Admin Page");
             }
+            System.out.println("Admin siden åpnet");
         });
     }
 }

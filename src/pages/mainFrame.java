@@ -2,8 +2,12 @@ package pages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Stack;
 
 public class mainFrame extends JFrame {
+    private final Stack<String> pageHistory = new Stack<>();
 
     public mainFrame() {
         setTitle("Alian Maid");
@@ -23,8 +27,8 @@ public class mainFrame extends JFrame {
         add(login, "Login");
         add(adminMainPage, "Admin Page");
         add(userMainPage, "User Page");
-        add(unitPage, "Units");
-        add(shortcutsPage, "Shortcuts");
+        add(unitPage, "Unit Page");
+        add(shortcutsPage, "Shortcut Page");
 
         // Start by showing the main page
         showPage("Login");
@@ -33,6 +37,11 @@ public class mainFrame extends JFrame {
     public void showPage(String pageName) {
         CardLayout cl = (CardLayout) getContentPane().getLayout();
         cl.show(getContentPane(), pageName);
+    }
+
+    public void goBack() {
+        CardLayout cl = (CardLayout) getContentPane().getLayout();
+        cl.previous(getContentPane());
     }
 
 }
