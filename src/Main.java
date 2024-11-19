@@ -7,7 +7,7 @@ public class Main {
 
         login frame = new login(null);
 
-        /*her er en liten simulation av hvordan det fungerer
+        //her er en liten simulation av hvordan det fungerer
         UnitManager unitManager = UnitManager.getInstance();
 
         Light livingRoomLight = new Light(1, "Living Room Light", 75, "Warm White");
@@ -17,15 +17,13 @@ public class Main {
         Speaker kitchenSpeaker = new Speaker(5, "Kitchen speakers", 80);
         Thermostat bedroomThermostat = new Thermostat(6, "Bedroom thermostat", 20);
 
-        // Display all units
-        unitManager.displayUnits();  // Display units
 
-        // Remove a unit and display again
-        unitManager.removeUnit(1);  // Remove Light
-        unitManager.displayUnits();  // Display remaining units
+        unitManager.displayUnits();
+
+        unitManager.removeUnit(1);
+        unitManager.displayUnits();
         unitManager.removeUnit(2);
 
         unitManager.displayUnits();
-    */
     }
 }
