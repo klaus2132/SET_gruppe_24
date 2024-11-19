@@ -7,7 +7,7 @@ public abstract class Unit {
     private int id;
     private String name;
     private boolean status;
-    private static ArrayList<Unit> units = new ArrayList<>();
+    public static ArrayList<Unit> units = new ArrayList<>();
 
     public Unit(int id, String name) {
         this.id = id;
@@ -55,5 +55,9 @@ public abstract class Unit {
                 System.out.println("ID = " + unit.getId() + ", Navn = " + unit.getName());
             }
         }
+    }
+    @Override
+    public String toString() {
+        return "ID: " + id + ", Navn: " + name;
     }
 }
