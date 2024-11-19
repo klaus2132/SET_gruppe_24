@@ -2,9 +2,18 @@ package models;
 
 public class SecurityCamera  extends Unit{
     private boolean recording;
+
+    //konstruktør
     public SecurityCamera(int id, String name) {
         super(id, name);
         this.recording = false;
+
+        UnitManager.getInstance().addUnit(this);
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("Security Camera - ID: " + getId() + ", Name: " + getName() + " Recording - " + (recording ? "On" : "Off"));
     }
 
     //gettere og settere

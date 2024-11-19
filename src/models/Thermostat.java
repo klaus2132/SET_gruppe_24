@@ -3,13 +3,20 @@ package models;
 public class Thermostat extends Unit{
     private int temperature;
 
-    // Konstruktør
+    //konstruktør
     public Thermostat(int id, String name, int temperature) {
         super(id, name);
         this.temperature = temperature;
+
+        UnitManager.getInstance().addUnit(this);
     }
 
-    // Getter og setter
+    @Override
+    public void displayDetails() {
+        System.out.println("Light - ID: " + getId() + ", Name: " + getName() + ", Temperature: " + temperature);
+    }
+
+    //gettere og settere
     public int getTemperature() {
         return temperature;
     }

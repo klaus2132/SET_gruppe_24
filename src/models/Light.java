@@ -1,17 +1,25 @@
 package models;
 
 public class Light extends Unit {
+
     private int brightness;
     private String color;
 
-    //konstruktør
     public Light(int id, String name, int brightness, String color) {
         super(id, name);
         this.brightness = brightness;
         this.color = color;
+
+        UnitManager.getInstance().addUnit(this);
     }
 
-    // Gettere og settere
+    @Override
+    public void displayDetails() {
+        System.out.println("Light - ID: " + getId() + ", Name: " + getName() +
+                ", Brightness: " + brightness + ", Color: " + color);
+    }
+
+    //gettere og settere
     public int getBrightness() {
         return brightness;
     }
@@ -27,5 +35,5 @@ public class Light extends Unit {
     public void setColor(String color) {
         this.color = color;
     }
-
 }
+

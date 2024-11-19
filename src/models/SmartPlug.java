@@ -1,17 +1,24 @@
 package models;
 
 public class SmartPlug extends Unit{
-
     private boolean power;
     private int wattage;
+
+    //kontruktør
     public SmartPlug(int id, String name){
         super(id, name);
         this.power = false;
         this.wattage = wattage;
+
+        UnitManager.getInstance().addUnit(this);
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("SmartPlug - ID: " + getId() + ", Name: " + getName() + ", Power: " + (power ? "On" : "Off") + ", Wattage: " + wattage);
     }
 
     //gettere og settere
-
     public int getWattage() {
         return wattage;
     }
