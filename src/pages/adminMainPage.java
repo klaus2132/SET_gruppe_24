@@ -24,6 +24,7 @@ public class adminMainPage extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Åpner Enheter");
+
             }
         });
         btnShortcuts.addActionListener(new ActionListener() {
