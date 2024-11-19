@@ -5,45 +5,36 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class userMainPage extends JDialog{
+public class userMainPage extends JPanel{
     private JPanel userPanel;
     private JLabel userHeading;
     private JButton enheterButton;
     private JButton snarveiButton;
 
     public userMainPage(JFrame parent) {
-        super(parent);
-        setTitle("User Home");
-        setContentPane(userPanel);
-        setMinimumSize(new Dimension(800, 500));
-        setModal(true);
-        setLocationRelativeTo(parent);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLayout(new BorderLayout());
+        add(userPanel);
 
         enheterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                unitPage page = new unitPage();
-                page.setVisible(true);
                 System.out.println("Åpner Enheter");
+                parent.getContentPane().removeAll();
+                parent.getContentPane().add(new unitPage(parent));
+                parent.revalidate();
+                parent.repaint();
             }
         });
         snarveiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Åpner Snarveier");
+                parent.getContentPane().removeAll();
+                parent.getContentPane().add(new shortcutsPage(parent));
+                parent.revalidate();
+                parent.repaint();
             }
         });
-
-        setVisible(true);
     }
-
-    public static void main(String[] args) {
-        System.out.printf("Hello world");
-
-        userMainPage frame = new userMainPage(null);
-    }
-
-
 }
 

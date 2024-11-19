@@ -7,18 +7,15 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
-import javax.swing.*;
-
-public class unitPage extends JFrame{
+public class unitPage extends JPanel{
     private JTable unitTable;
+    private JPanel unitPanel;
 
-    public unitPage(){
-        setTitle("Enheter");
-        setSize(800,500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public unitPage(JFrame parent){
+        setLayout(new BorderLayout());
+        add(unitPanel);
 
         unitTable = new JTable();
-
         JScrollPane scrollPane = new JScrollPane(unitTable);
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -43,15 +40,4 @@ public class unitPage extends JFrame{
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         unitTable.setModel(model);
     }
-
-    public static void main(String[] args) {
-        // Adding sample units for testing
-        new models.Light(1, "Living Room Light", 75, "Warm White");
-        new models.Vacuum(2, "Kitchen Vacuum", 50);
-
-        // Directly create and display the unit page
-        unitPage page = new unitPage();
-        page.setVisible(true);  // Show the window
-    }
-
 }
