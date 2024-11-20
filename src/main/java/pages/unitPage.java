@@ -10,17 +10,27 @@ import java.util.ArrayList;
 public class unitPage extends JPanel{
     private JTable unitTable;
     private JPanel unitPanel;
+    private JButton deleteButton;
 
     public unitPage(JFrame parent){
         setLayout(new BorderLayout());
-        add(unitPanel);
-
+        unitPanel = new JPanel();
+        unitPanel.setLayout(new BorderLayout()); 
 
         unitTable = new JTable();
         JScrollPane scrollPane = new JScrollPane(unitTable);
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        panel.add(scrollPane);
+        JPanel tablePanel = new JPanel();
+        tablePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        tablePanel.add(scrollPane);
+
+        deleteButton = new JButton("Delete Unit");
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(deleteButton);
+
+        unitPanel.add(tablePanel, BorderLayout.CENTER);
+        unitPanel.add(buttonPanel, BorderLayout.SOUTH);
+        add(unitPanel, BorderLayout.CENTER);
 
 
         JButton btnBack = new JButton("Tilbake");
@@ -32,24 +42,37 @@ public class unitPage extends JPanel{
             }
         });
 
-        add(panel);
+        //slette knapp
+        deleteButton.addActionListener(e -> {deleteSelected();});
+
     }
     public void populateTable() {
-
         ArrayList<Unit> units = UnitManager.getInstance().getUnits();
 
-        String[][] data = new String[units.size()][2];
-        String[] columnNames = {"Type","Enhet navn"};
+        String[][] data = new String[units.size()][3];
+        String[] columnNames = {"Id","Type","Enhet navn"};
 
         for (int i = 0; i < units.size(); i++) {
-            data[i][0] = units.get(i).getType();
-            data[i][1] = units.get(i).getName();
+            data[i][0] = String.valueOf(units.get(i).getId());
+            data[i][1] = units.get(i).getType();
+            data[i][2] = units.get(i).getName();
         }
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         unitTable.setModel(model);
-
-        unitTable.revalidate();   // Revalidate to ensure the table layout is updated
+        unitTable.revalidate();
         unitTable.repaint();
+    }
+
+    private void deleteSelected(){
+        int selectedRow = unitTable.getSelectedRow();
+
+        if(selectedRow != -1){
+            int unitId = Integer.parseInt((String) unitTable.getValueAt(selectedRow, 0));
+            UnitManager.getInstance().removeUnit(unitId);
+            populateTable();
+        }else {
+            System.out.println("Ingen enheter å slette");
+        }
     }
 }

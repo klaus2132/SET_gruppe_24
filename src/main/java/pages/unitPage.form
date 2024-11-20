@@ -7,13 +7,6 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="6d845" class="javax.swing.JLabel">
-        <constraints/>
-        <properties>
-          <font size="20"/>
-          <text value="Enheter"/>
-        </properties>
-      </component>
       <scrollpane id="d8fe8">
         <constraints/>
         <properties/>

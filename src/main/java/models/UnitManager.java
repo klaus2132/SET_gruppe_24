@@ -26,7 +26,7 @@ public class UnitManager {
     //fjern enhet
     public void removeUnit(int id) {
         units.removeIf(unit -> unit.getId() == id);
-        System.out.println("Removed Unit with ID: " + id);
+        System.out.println("Removed Unit : " + id);
     }
 
     //hvis enheter
