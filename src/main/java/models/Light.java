@@ -19,6 +19,11 @@ public class Light extends Unit {
                 ", Brightness: " + brightness + ", Color: " + color);
     }
 
+    @Override
+    public String getType() {
+        return "Lys";
+    }
+
     //gettere og settere
     public int getBrightness() {
         return brightness;

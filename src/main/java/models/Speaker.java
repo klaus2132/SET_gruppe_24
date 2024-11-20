@@ -16,6 +16,10 @@ public class Speaker extends Unit{
         System.out.println("Speaker - ID: " + getId() + ", Name: " + getName() +
                 ", Volume: " + volume);
     }
+    @Override
+    public String getType() {
+        return "Speaker";
+    }
 
     //getter og settere
     public int getVolume() {

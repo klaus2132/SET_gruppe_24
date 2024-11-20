@@ -16,6 +16,10 @@ public class Vacuum extends Unit {
         System.out.println("Vacuum - ID: " + getId() + ", Name: " + getName() +
                 ", Battery: " + battery + "%");
     }
+    @Override
+    public String getType() {
+        return "Støvsuger";
+    }
 
     //gettere and settere
     public int getBattery() {

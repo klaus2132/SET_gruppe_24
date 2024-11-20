@@ -44,11 +44,12 @@ public class unitPage extends JPanel{
             System.out.println("Units list is null");
         }
 
-        String[][] data = new String[units.size()][1];
-        String[] columnNames = {"Enhet navn"};
+        String[][] data = new String[units.size()][2];
+        String[] columnNames = {"Type","Enhet navn"};
 
         for (int i = 0; i < units.size(); i++) {
-            data[i][0] = units.get(i).getName();
+            data[i][0] = units.get(i).getType();
+            data[i][1] = units.get(i).getName();
         }
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);

@@ -32,5 +32,6 @@ public abstract class Unit {
 
     //abstrakte klasser
     public abstract void displayDetails();
+    public abstract String getType();
 }
 

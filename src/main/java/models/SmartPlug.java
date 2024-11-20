@@ -18,6 +18,11 @@ public class SmartPlug extends Unit{
         System.out.println("SmartPlug - ID: " + getId() + ", Name: " + getName() + ", Power: " + (power ? "On" : "Off") + ", Wattage: " + wattage);
     }
 
+    @Override
+    public String getType() {
+        return "SmartPlug";
+    }
+
     //gettere og settere
     public int getWattage() {
         return wattage;

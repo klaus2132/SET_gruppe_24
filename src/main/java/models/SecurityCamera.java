@@ -16,6 +16,11 @@ public class SecurityCamera  extends Unit{
         System.out.println("Security Camera - ID: " + getId() + ", Name: " + getName() + " Recording - " + (recording ? "On" : "Off"));
     }
 
+    @Override
+    public String getType() {
+        return "Sikkerhets kamera";
+    }
+
     //gettere og settere
     public boolean getRecording() {
         return recording;
