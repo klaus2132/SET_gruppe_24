@@ -13,7 +13,7 @@ public class mainFrame extends JFrame {
         setTitle("Alian Maid");
         setSize(800, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new CardLayout()); // Use CardLayout for page switching
+        setLayout(new CardLayout());
 
         // Create pages
         JPanel login = new login(this);
