@@ -1,5 +1,7 @@
 package pages;
 
+import models.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -26,6 +28,10 @@ public class addUnitPage extends JPanel {
             if (parent instanceof mainFrame) {
                 ((mainFrame) parent).goBack();
             }
+        });
+
+        createButton.addActionListener(e -> {
+            createUnit();
         });
 
         // Handle dropdown change to update attribute labels dynamically
@@ -70,4 +76,39 @@ public class addUnitPage extends JPanel {
             }
         });
     }
+    private void createUnit() {
+        String selectedType = (String) unitType.getSelectedItem();
+        String name = nameField.getText(); // Name is common to all
+
+        if (selectedType.equals("Lys")) {
+            int brightness = Integer.parseInt(attributeTextfield1.getText()); // Convert to int
+            String color = attributeTextfield2.getText();
+            Light light = new Light(name, brightness, color);
+        } else if (selectedType.equals("Støvsuger")) {
+            int battery = Integer.parseInt(attributeTextfield1.getText());
+            Vacuum vacuum = new Vacuum(name, battery);
+        } else if (selectedType.equals("Sikkerhets kamera")) {
+            SecurityCamera securityCamera = new SecurityCamera(name);
+        } else if (selectedType.equals("SmartPlug")) {
+            int wattage = Integer.parseInt(attributeTextfield1.getText());
+            SmartPlug smartPlug = new SmartPlug(name, wattage);
+        } else if (selectedType.equals("Høytaler")) {
+            int volume =  Integer.parseInt(attributeTextfield1.getText());
+            Speaker speaker = new Speaker(name, volume);
+        } else if (selectedType.equals("Thermostat")) {
+            int temperature = Integer.parseInt(attributeTextfield1.getText());
+            Thermostat thermostat = new Thermostat(name, temperature);
+        } else {
+            System.out.println("Her har det skjedd noe galt");
+        }
+
+        //nullstiller skjemaet
+        nameField.setText("");
+        attributeTextfield1.setText("");
+        attributeTextfield2.setText("");
+        unitType.setSelectedIndex(0);
+
+    }
+
 }
+

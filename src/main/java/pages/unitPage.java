@@ -15,11 +15,13 @@ public class unitPage extends JPanel{
         setLayout(new BorderLayout());
         add(unitPanel);
 
+
         unitTable = new JTable();
         JScrollPane scrollPane = new JScrollPane(unitTable);
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel.add(scrollPane);
+
 
         JButton btnBack = new JButton("Tilbake");
         add(btnBack, BorderLayout.SOUTH);
@@ -30,14 +32,17 @@ public class unitPage extends JPanel{
             }
         });
 
-
         add(panel);
-
-        populateTable();
     }
-    private void populateTable() {
+    public void populateTable() {
 
         ArrayList<Unit> units = UnitManager.getInstance().getUnits();
+        System.out.println("UnitManager instance: " + UnitManager.getInstance());  // Check if UnitManager is initialized
+        if (units != null) {
+            System.out.println("Units in UnitManager: " + units.size()); // Check if units are in the list
+        } else {
+            System.out.println("Units list is null");
+        }
 
         String[][] data = new String[units.size()][1];
         String[] columnNames = {"Enhet navn"};
@@ -48,5 +53,8 @@ public class unitPage extends JPanel{
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         unitTable.setModel(model);
+
+        unitTable.revalidate();   // Revalidate to ensure the table layout is updated
+        unitTable.repaint();
     }
 }

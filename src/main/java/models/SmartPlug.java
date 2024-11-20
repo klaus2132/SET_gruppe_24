@@ -5,8 +5,8 @@ public class SmartPlug extends Unit{
     private int wattage;
 
     //kontruktør
-    public SmartPlug(int id, String name){
-        super(id, name);
+    public SmartPlug(String name, int wattage){
+        super(name);
         this.power = false;
         this.wattage = wattage;
 

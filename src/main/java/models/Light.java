@@ -5,8 +5,8 @@ public class Light extends Unit {
     private int brightness;
     private String color;
 
-    public Light(int id, String name, int brightness, String color) {
-        super(id, name);
+    public Light(String name, int brightness, String color) {
+        super(name);
         this.brightness = brightness;
         this.color = color;
 

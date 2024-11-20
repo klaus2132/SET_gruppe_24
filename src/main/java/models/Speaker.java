@@ -4,8 +4,8 @@ public class Speaker extends Unit{
     private int volume;
 
     //konstruktør
-    public Speaker(int id, String name, int volume) {
-        super(id, name);
+    public Speaker(String name, int volume) {
+        super(name);
         this.volume = volume;
 
         UnitManager.getInstance().addUnit(this);

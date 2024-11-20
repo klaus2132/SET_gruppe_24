@@ -4,8 +4,8 @@ public class Vacuum extends Unit {
 
     private int battery;
 
-    public Vacuum(int id, String name, int battery) {
-        super(id, name);
+    public Vacuum(String name, int battery) {
+        super(name);
         this.battery = battery;
 
         UnitManager.getInstance().addUnit(this);

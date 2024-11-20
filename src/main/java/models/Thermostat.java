@@ -4,8 +4,8 @@ public class Thermostat extends Unit{
     private int temperature;
 
     //konstruktør
-    public Thermostat(int id, String name, int temperature) {
-        super(id, name);
+    public Thermostat(String name, int temperature) {
+        super(name);
         this.temperature = temperature;
 
         UnitManager.getInstance().addUnit(this);

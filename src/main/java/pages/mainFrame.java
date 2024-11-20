@@ -8,6 +8,7 @@ import java.util.Stack;
 
 public class mainFrame extends JFrame {
     private final Stack<String> pageHistory = new Stack<>();
+    private unitPage unitPage;
 
     public mainFrame() {
         setTitle("Alian Maid");
@@ -19,7 +20,7 @@ public class mainFrame extends JFrame {
         JPanel login = new login(this);
         JPanel adminMainPage = new adminMainPage(this);
         JPanel userMainPage = new userMainPage(this);
-        JPanel unitPage = new unitPage(this);
+        unitPage = new unitPage(this);
         JPanel shortcutsPage = new shortcutsPage(this);
         JPanel addUnitPage = new addUnitPage(this);
 
@@ -47,6 +48,10 @@ public class mainFrame extends JFrame {
         }
         cl.show(getContentPane(), pageName);
         System.out.println("Navigerte side: " + pageName);
+
+        if(pageName.equals("Unit Page")){
+            unitPage.populateTable();
+        }
     }
 
     //navigerer til forrige side
@@ -68,5 +73,7 @@ public class mainFrame extends JFrame {
             System.out.println("Er ikke mulig å gå lenger bak");
         }
     }
+
+    public unitPage getUnitPage(){return unitPage;}
 
 }

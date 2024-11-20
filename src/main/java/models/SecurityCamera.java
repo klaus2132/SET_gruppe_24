@@ -4,8 +4,8 @@ public class SecurityCamera  extends Unit{
     private boolean recording;
 
     //konstruktør
-    public SecurityCamera(int id, String name) {
-        super(id, name);
+    public SecurityCamera(String name) {
+        super(name);
         this.recording = false;
 
         UnitManager.getInstance().addUnit(this);

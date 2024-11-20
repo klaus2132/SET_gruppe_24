@@ -1,13 +1,14 @@
 package models;
 
 public abstract class Unit {
+    private static int nextId = 1;
     private int id;
     private String name;
     private boolean status;
 
     //konstruktør
-    public Unit(int id, String name) {
-        this.id = id;
+    public Unit(String name) {
+        this.id = nextId++;
         this.name = name;
         this.status = false;
     }
