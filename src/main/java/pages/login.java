@@ -13,22 +13,20 @@ public class login extends JPanel {
     public login(JFrame parent) {
         setLayout(new BorderLayout());
         add(loginpanel);
+        btnUser.addActionListener(e -> {navigateToUserPage(parent);});
+        btnAdmin.addActionListener(e -> {navigateToAdminPage(parent);});
+    }
 
 
-        btnUser.addActionListener(e -> {
-            if(parent instanceof mainFrame){
-                ((mainFrame) parent).showPage("User Page");
-            }
-            System.out.println("User siden åpnet");
-        });
-
-
-        btnAdmin.addActionListener(e -> {
-            if (parent instanceof mainFrame) {
-                ((mainFrame) parent).showPage("Admin Page");
-            }
-            System.out.println("Admin siden åpnet");
-        });
+    public void navigateToUserPage(JFrame parent){
+        if(parent instanceof mainFrame){
+            ((mainFrame) parent).showPage("User Page");
+        }
+    }
+    public void navigateToAdminPage(JFrame parent){
+        if(parent instanceof mainFrame){
+            ((mainFrame) parent).showPage("Admin Page");
+        }
     }
 }
 
