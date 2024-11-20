@@ -13,6 +13,7 @@ public class adminMainPage extends JPanel{
     private JButton btnShortcuts;
     private JButton btnUnits;
     private JButton addUnitButton;
+    private JComboBox comboBox1;
 
     public adminMainPage(JFrame parent){
         setLayout(new BorderLayout());
@@ -32,7 +33,6 @@ public class adminMainPage extends JPanel{
             if (parent instanceof mainFrame) {
                 ((mainFrame) parent).showPage("Unit Page");
             }
-
         });
 
         addUnitButton.addActionListener(e -> {
@@ -47,6 +47,8 @@ public class adminMainPage extends JPanel{
                 ((mainFrame) parent).showPage("Shortcut Page");
             }
         });
+
+        //knapp for andre metoder å legge til enheter, mulig lag en combobox
     }
 }
 
