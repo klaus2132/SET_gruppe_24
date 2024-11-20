@@ -37,12 +37,6 @@ public class unitPage extends JPanel{
     public void populateTable() {
 
         ArrayList<Unit> units = UnitManager.getInstance().getUnits();
-        System.out.println("UnitManager instance: " + UnitManager.getInstance());  // Check if UnitManager is initialized
-        if (units != null) {
-            System.out.println("Units in UnitManager: " + units.size()); // Check if units are in the list
-        } else {
-            System.out.println("Units list is null");
-        }
 
         String[][] data = new String[units.size()][2];
         String[] columnNames = {"Type","Enhet navn"};
