@@ -17,24 +17,34 @@ public class UnitManager {
         return instance;
     }
 
+    //velg en enhet
+    public Unit getUnitById(int id){
+        for (Unit unit : units) {
+            if (unit.getId() == id) {
+                return unit;
+            }
+        }
+        return null;
+    }
+
     //legge til unit i listen
     public void addUnit(Unit unit) {
         units.add(unit);
-        System.out.println("Added Unit: " + unit.getName());
+        System.out.println("La til enhet: " + unit.getName());
     }
 
     //fjern enhet
     public void removeUnit(int id) {
         units.removeIf(unit -> unit.getId() == id);
-        System.out.println("Removed Unit : " + id);
+        System.out.println("Slettet enhet: " + id);
     }
 
     //hvis enheter
     public void displayUnits() {
         if (units.isEmpty()) {
-            System.out.println("No units available.");
+            System.out.println("Ingen enheter tilgjengelig");
         } else {
-            System.out.println("Units:");
+            System.out.println("Enheter:");
             for (Unit unit : units) {
                 unit.displayDetails();
             }

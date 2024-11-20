@@ -34,7 +34,7 @@ public class addUnitPage extends JPanel {
             createUnit();
         });
 
-        // Handle dropdown change to update attribute labels dynamically
+        //velger hva som hvises basert på type unit
         unitType.addActionListener(e -> {
             String selectedType = (String) unitType.getSelectedItem();
             if (selectedType.equals("Lys")) {
@@ -101,6 +101,9 @@ public class addUnitPage extends JPanel {
         } else {
             System.out.println("Her har det skjedd noe galt");
         }
+
+
+        JOptionPane.showMessageDialog(this, "Enhet er lagd og lagt til");
 
         //nullstiller skjemaet
         nameField.setText("");

@@ -1,5 +1,7 @@
 package pages;
 
+import models.Unit;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayDeque;
@@ -16,7 +18,6 @@ public class mainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new CardLayout());
 
-        // Create pages
         JPanel login = new login(this);
         JPanel adminMainPage = new adminMainPage(this);
         JPanel userMainPage = new userMainPage(this);
@@ -24,8 +25,6 @@ public class mainFrame extends JFrame {
         JPanel shortcutsPage = new shortcutsPage(this);
         JPanel addUnitPage = new addUnitPage(this);
 
-
-        // Add pages to the frame with unique names
         add(login, "Login");
         add(adminMainPage, "Admin Page");
         add(userMainPage, "User Page");
@@ -33,8 +32,14 @@ public class mainFrame extends JFrame {
         add(shortcutsPage, "Shortcut Page");
         add(addUnitPage, "Add Unit Page");
 
-        // Start by showing the main page
+
         showPage("Login");
+    }
+
+    public void showEditUnitPage(Unit unit) {
+        JPanel editUnitPage = new editUnitPage(this, unit, unitPage);
+        add(editUnitPage, "Edit Unit Page");
+        showPage("Edit Unit Page");
     }
 
     //hvis en side og legge til den riktige siden i historien
@@ -59,7 +64,6 @@ public class mainFrame extends JFrame {
         if (!pageHistory.isEmpty()) {
             //fjerner nåværende side fra history
             pageHistory.pop();
-
             if (!pageHistory.isEmpty()) {
                 //ser på øverste elementet
                 String previousPage = pageHistory.peek();

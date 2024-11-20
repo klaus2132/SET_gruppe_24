@@ -11,11 +11,13 @@ public class unitPage extends JPanel{
     private JTable unitTable;
     private JPanel unitPanel;
     private JButton deleteButton;
+    private JButton editButton;
+    private JButton addButton;
 
     public unitPage(JFrame parent){
         setLayout(new BorderLayout());
         unitPanel = new JPanel();
-        unitPanel.setLayout(new BorderLayout()); 
+        unitPanel.setLayout(new BorderLayout());
 
         unitTable = new JTable();
         JScrollPane scrollPane = new JScrollPane(unitTable);
@@ -23,10 +25,13 @@ public class unitPage extends JPanel{
         tablePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         tablePanel.add(scrollPane);
 
-        deleteButton = new JButton("Delete Unit");
+        deleteButton = new JButton("Slett enhet");
+        editButton = new JButton("Rediger enhet");
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(deleteButton);
+        buttonPanel.add(editButton);
 
         unitPanel.add(tablePanel, BorderLayout.CENTER);
         unitPanel.add(buttonPanel, BorderLayout.SOUTH);
@@ -45,6 +50,8 @@ public class unitPage extends JPanel{
         //slette knapp
         deleteButton.addActionListener(e -> {deleteSelected();});
 
+        //edit knapp
+        editButton.addActionListener(e -> editSelectedUnit());
     }
     public void populateTable() {
         ArrayList<Unit> units = UnitManager.getInstance().getUnits();
@@ -72,7 +79,25 @@ public class unitPage extends JPanel{
             UnitManager.getInstance().removeUnit(unitId);
             populateTable();
         }else {
-            System.out.println("Ingen enheter å slette");
+            JOptionPane.showMessageDialog(this, "Venligst velg en enhet du vil slette");
+        }
+    }
+
+    private void editSelectedUnit() {
+        int selectedRow = unitTable.getSelectedRow();
+
+        if (selectedRow != -1) {
+            int unitId = Integer.parseInt((String) unitTable.getValueAt(selectedRow, 0));
+            Unit unitToEdit = UnitManager.getInstance().getUnitById(unitId);
+
+            if (unitToEdit != null) {
+                JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+                if (parentFrame instanceof mainFrame) {
+                    ((mainFrame) parentFrame).showEditUnitPage(unitToEdit);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Venligst velg en enhet du vil redigere");
         }
     }
 }
