@@ -21,6 +21,7 @@ public class mainFrame extends JFrame {
         JPanel userMainPage = new userMainPage(this);
         JPanel unitPage = new unitPage(this);
         JPanel shortcutsPage = new shortcutsPage(this);
+        JPanel addUnitPage = new addUnitPage(this);
 
 
         // Add pages to the frame with unique names
@@ -29,6 +30,7 @@ public class mainFrame extends JFrame {
         add(userMainPage, "User Page");
         add(unitPage, "Unit Page");
         add(shortcutsPage, "Shortcut Page");
+        add(addUnitPage, "Add Unit Page");
 
         // Start by showing the main page
         showPage("Login");

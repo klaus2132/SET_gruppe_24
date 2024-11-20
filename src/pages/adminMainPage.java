@@ -32,6 +32,12 @@ public class adminMainPage extends JPanel{
             }
         });
 
+        addUnitButton.addActionListener(e -> {
+            if (parent instanceof mainFrame) {
+                ((mainFrame) parent).showPage("Add Unit Page");
+            }
+        });
+
         //åpner shortcut siden
         btnShortcuts.addActionListener(e -> {
             if (parent instanceof mainFrame) {
