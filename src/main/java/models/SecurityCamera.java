@@ -28,12 +28,4 @@ public class SecurityCamera  extends Unit{
     public void setRecording(boolean recording) {
         this.recording = recording;
     }
-
-    //metoder for start og stop av filming
-    public void startRecording(){
-        this.recording = true;
-    }
-    public void stopRecording(){
-        this.recording = false;
-    }
 }

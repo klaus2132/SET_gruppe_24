@@ -35,7 +35,7 @@ public class UnitManager {
 
     //fjern enhet
     public void removeUnit(Unit unit) {
-        units.remove(unit);  // Removes the unit directly from the list
+        units.remove(unit);
         System.out.println("Fjernet enhet: " + unit.getName());
     }
 

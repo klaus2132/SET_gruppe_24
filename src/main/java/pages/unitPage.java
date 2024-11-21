@@ -70,8 +70,6 @@ public class unitPage extends JPanel{
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         unitTable.setModel(model);
 
-
-        // Set the "Status" column to use checkboxes
         unitTable.getColumnModel().getColumn(3).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
