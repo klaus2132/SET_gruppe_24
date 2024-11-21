@@ -47,7 +47,6 @@ public class adminMainPage extends JPanel{
                 ((mainFrame) parent).showPage("Shortcut Page");
             }
         });
-        //knapp for andre metoder å legge til enheter, mulig lag en combobox
     }
 }
 
