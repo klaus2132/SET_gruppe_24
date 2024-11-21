@@ -1,4 +1,3 @@
-import models.Light;
 import models.SmartPlug;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
