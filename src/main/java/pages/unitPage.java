@@ -92,7 +92,8 @@ public class unitPage extends JPanel{
 
         if(selectedRow != -1){
             int unitId = Integer.parseInt((String) unitTable.getValueAt(selectedRow, 0));
-            UnitManager.getInstance().removeUnit(unitId);
+            Unit unit = UnitManager.getInstance().getUnitById(unitId);
+            UnitManager.getInstance().removeUnit(unit);
             populateTable();
         }else {
             JOptionPane.showMessageDialog(this, "Venligst velg en enhet du vil slette");

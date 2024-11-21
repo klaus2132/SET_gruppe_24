@@ -34,9 +34,9 @@ public class UnitManager {
     }
 
     //fjern enhet
-    public void removeUnit(int id) {
-        units.removeIf(unit -> unit.getId() == id);
-        System.out.println("Slettet enhet: " + id);
+    public void removeUnit(Unit unit) {
+        units.remove(unit);  // Removes the unit directly from the list
+        System.out.println("Fjernet enhet: " + unit.getName());
     }
 
     //hvis enheter
