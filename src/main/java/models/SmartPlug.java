@@ -7,7 +7,6 @@ public class SmartPlug extends Unit{
     //kontruktør
     public SmartPlug(String name, int wattage){
         super(name);
-        this.power = false;
         this.wattage = wattage;
 
         UnitManager.getInstance().addUnit(this);
@@ -15,7 +14,7 @@ public class SmartPlug extends Unit{
 
     @Override
     public void displayDetails() {
-        System.out.println("SmartPlug - ID: " + getId() + ", Name: " + getName() + ", Power: " + (power ? "On" : "Off") + ", Wattage: " + wattage);
+        System.out.println("SmartPlug - ID: " + getId() + ", Name: " + getName() + ", Wattage: " + getWattage());
     }
 
     @Override
@@ -29,13 +28,5 @@ public class SmartPlug extends Unit{
     }
     public void setWattage(int wattage) {
         this.wattage = wattage;
-    }
-
-    public void setPower(boolean power) {
-        this.power = power;
-    }
-
-    public boolean getPower() {
-        return power;
     }
 }
