@@ -30,11 +30,9 @@ public class addUnitPage extends JPanel {
             }
         });
 
-        createButton.addActionListener(e -> {
-            createUnit();
-        });
+        createButton.addActionListener(e -> {createUnit();});
 
-        //velger hva som hvises basert på type unit
+        //velger hva som vises basert på type unit
         unitType.addActionListener(e -> {
             String selectedType = (String) unitType.getSelectedItem();
             if (selectedType.equals("Lys")) {
@@ -77,41 +75,82 @@ public class addUnitPage extends JPanel {
         });
     }
     private void createUnit() {
-        String selectedType = (String) unitType.getSelectedItem();
-        String name = nameField.getText(); // Name is common to all
+        try {
+            String selectedType = (String) unitType.getSelectedItem();
+            String name = nameField.getText();
 
-        if (selectedType.equals("Lys")) {
-            int brightness = Integer.parseInt(attributeTextfield1.getText()); // Convert to int
-            String color = attributeTextfield2.getText();
-            Light light = new Light(name, brightness, color);
-        } else if (selectedType.equals("Støvsuger")) {
-            int battery = Integer.parseInt(attributeTextfield1.getText());
-            Vacuum vacuum = new Vacuum(name, battery);
-        } else if (selectedType.equals("Sikkerhets kamera")) {
-            SecurityCamera securityCamera = new SecurityCamera(name);
-        } else if (selectedType.equals("SmartPlug")) {
-            int wattage = Integer.parseInt(attributeTextfield1.getText());
-            SmartPlug smartPlug = new SmartPlug(name, wattage);
-        } else if (selectedType.equals("Høytaler")) {
-            int volume =  Integer.parseInt(attributeTextfield1.getText());
-            Speaker speaker = new Speaker(name, volume);
-        } else if (selectedType.equals("Thermostat")) {
-            int temperature = Integer.parseInt(attributeTextfield1.getText());
-            Thermostat thermostat = new Thermostat(name, temperature);
-        } else {
-            System.out.println("Her har det skjedd noe galt");
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("Navn kan ikke være tomt.");
+            }
+
+            if (selectedType.equals("Lys")) {
+                String brightnessText = attributeTextfield1.getText();
+                String color = attributeTextfield2.getText();
+
+                if (brightnessText.isEmpty() || color.isEmpty()) {
+                    throw new IllegalArgumentException("Alle felt må fylles ut for Lys.");
+                }
+
+                int brightness = Integer.parseInt(brightnessText);
+                Light light = new Light(name, brightness, color);
+            } else if (selectedType.equals("Støvsuger")) {
+                String batteryText = attributeTextfield1.getText();
+
+                if (batteryText.isEmpty()) {
+                    throw new IllegalArgumentException("Alle felt må fylles ut for Støvsuger.");
+                }
+
+                int battery = Integer.parseInt(batteryText);
+                Vacuum vacuum = new Vacuum(name, battery);
+            } else if (selectedType.equals("Sikkerhets kamera")) {
+                SecurityCamera securityCamera = new SecurityCamera(name);
+            } else if (selectedType.equals("SmartPlug")) {
+                String wattageText = attributeTextfield1.getText();
+
+                if (wattageText.isEmpty()) {
+                    throw new IllegalArgumentException("Alle felt må fylles ut for SmartPlug.");
+                }
+
+                int wattage = Integer.parseInt(wattageText);
+                SmartPlug smartPlug = new SmartPlug(name, wattage);
+            } else if (selectedType.equals("Høytaler")) {
+                String volumeText = attributeTextfield1.getText();
+
+                if (volumeText.isEmpty()) {
+                    throw new IllegalArgumentException("Alle felt må fylles ut for Høytaler.");
+                }
+
+                int volume = Integer.parseInt(volumeText);
+                Speaker speaker = new Speaker(name, volume);
+            } else if (selectedType.equals("Thermostat")) {
+                String temperatureText = attributeTextfield1.getText();
+
+                if (temperatureText.isEmpty()) {
+                    throw new IllegalArgumentException("Alle felt må fylles ut for Thermostat.");
+                }
+
+                int temperature = Integer.parseInt(temperatureText);
+                Thermostat thermostat = new Thermostat(name, temperature);
+            } else {
+                throw new IllegalArgumentException("Ugyldig enhetstype valgt.");
+            }
+
+            JOptionPane.showMessageDialog(this, "Enhet er lagd og lagt til");
+
+            //nullstiller skjemaet
+            nameField.setText("");
+            attributeTextfield1.setText("");
+            attributeTextfield2.setText("");
+            unitType.setSelectedIndex(0);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Skriv inn gyldige tall i feltene der det kreves.", "Feil", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Feil", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "En uventet feil oppstod: " + e.getMessage(), "Feil", JOptionPane.ERROR_MESSAGE);
         }
-
-
-        JOptionPane.showMessageDialog(this, "Enhet er lagd og lagt til");
-
-        //nullstiller skjemaet
-        nameField.setText("");
-        attributeTextfield1.setText("");
-        attributeTextfield2.setText("");
-        unitType.setSelectedIndex(0);
-
     }
+
 
 }
 

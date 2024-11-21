@@ -35,7 +35,6 @@ public class editUnitPage extends JPanel{
         });
         //her legges til save knappen
         saveButton.addActionListener(e -> {saveUnitChanges();});
-
     }
 
     private void preFillFields() {
@@ -76,29 +75,82 @@ public class editUnitPage extends JPanel{
     }
 
     private void saveUnitChanges() {
-        unitToEdit.setName(nameField.getText());
-        unitToEdit.setStatus(status.isSelected());
+        try {
+            String name = nameField.getText();
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("Navn kan ikke være tomt.");
+            }
+            unitToEdit.setName(name);
+            unitToEdit.setStatus(status.isSelected());
+            String selectedType = (String) typeComboBox.getSelectedItem();
 
-        String selectedType = (String) typeComboBox.getSelectedItem();
-        if (selectedType.equals("Lys") && unitToEdit instanceof Light) {
-            ((Light) unitToEdit).setBrightness(Integer.parseInt(attribute1.getText()));
-            ((Light) unitToEdit).setColor(attribute2.getText());
-        } else if (selectedType.equals("Støvsuger") && unitToEdit instanceof Vacuum) {
-            ((Vacuum) unitToEdit).setBattery(Integer.parseInt(attribute1.getText()));
-        } else if (selectedType.equals("SmartPlug") && unitToEdit instanceof SmartPlug) {
-            ((SmartPlug) unitToEdit).setWattage(Integer.parseInt(attribute1.getText()));
-        } else if (selectedType.equals("Høytaler") && unitToEdit instanceof Speaker) {
-            ((Speaker) unitToEdit).setVolume(Integer.parseInt(attribute1.getText()));
-        } else if (selectedType.equals("Thermostat") && unitToEdit instanceof Thermostat) {
-            ((Thermostat) unitToEdit).setTemperature(Integer.parseInt(attribute1.getText()));
-        }
+            if (selectedType.equals("Lys") && unitToEdit instanceof Light) {
+                String brightnessText = attribute1.getText();
+                String color = attribute2.getText();
 
-        JOptionPane.showMessageDialog(this, "Enhet oppdatert:)");
-        unitPage.populateTable();
-        if (SwingUtilities.getWindowAncestor(this) instanceof mainFrame) {
-            ((mainFrame) SwingUtilities.getWindowAncestor(this)).goBack();
+                if (brightnessText.isEmpty() || color.isEmpty()) {
+                    throw new IllegalArgumentException("Alle felter må fylles ut for Lys.");
+                }
+
+                int brightness = Integer.parseInt(brightnessText);
+                ((Light) unitToEdit).setBrightness(brightness);
+                ((Light) unitToEdit).setColor(color);
+            } else if (selectedType.equals("Støvsuger") && unitToEdit instanceof Vacuum) {
+                String batteryText = attribute1.getText();
+
+                if (batteryText.isEmpty()) {
+                    throw new IllegalArgumentException("Alle felter må fylles ut for Støvsuger.");
+                }
+
+                int battery = Integer.parseInt(batteryText);
+                ((Vacuum) unitToEdit).setBattery(battery);
+            } else if (selectedType.equals("SmartPlug") && unitToEdit instanceof SmartPlug) {
+                String wattageText = attribute1.getText();
+
+                if (wattageText.isEmpty()) {
+                    throw new IllegalArgumentException("Alle felter må fylles ut for SmartPlug.");
+                }
+
+                int wattage = Integer.parseInt(wattageText);
+                ((SmartPlug) unitToEdit).setWattage(wattage);
+            } else if (selectedType.equals("Høytaler") && unitToEdit instanceof Speaker) {
+                String volumeText = attribute1.getText();
+
+                if (volumeText.isEmpty()) {
+                    throw new IllegalArgumentException("Alle felter må fylles ut for Høytaler.");
+                }
+
+                int volume = Integer.parseInt(volumeText);
+                ((Speaker) unitToEdit).setVolume(volume);
+            } else if (selectedType.equals("Thermostat") && unitToEdit instanceof Thermostat) {
+                String temperatureText = attribute1.getText();
+
+                if (temperatureText.isEmpty()) {
+                    throw new IllegalArgumentException("Alle felter må fylles ut for Thermostat.");
+                }
+
+                int temperature = Integer.parseInt(temperatureText);
+                ((Thermostat) unitToEdit).setTemperature(temperature);
+            } else {
+                throw new IllegalArgumentException("Ugyldig enhetstype eller enhetstype samsvarer ikke med valgt enhet.");
+            }
+
+            JOptionPane.showMessageDialog(this, "Enhet oppdatert:)");
+
+            unitPage.populateTable();
+            if (SwingUtilities.getWindowAncestor(this) instanceof mainFrame) {
+                ((mainFrame) SwingUtilities.getWindowAncestor(this)).goBack();
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Skriv inn gyldige tall i feltene der det kreves.", "Feil", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Feil", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "En uventet feil oppstod: " + e.getMessage(), "Feil", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
 
 }
