@@ -2,6 +2,7 @@ package pages;
 import models.Unit;
 import models.UnitManager;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
@@ -44,11 +45,23 @@ public class userUnitPage extends JPanel{
             data[i][0] = String.valueOf(units.get(i).getId());
             data[i][1] = units.get(i).getType();
             data[i][2] = units.get(i).getName();
-            data[i][3] = units.get(i).getStatus() ? "På" : "Av";
+            data[i][3] = String.valueOf(units.get(i).getStatus());
         }
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         unitTable.setModel(model);
+        // Set the "Status" column to use checkboxes
+        unitTable.getColumnModel().getColumn(3).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                JCheckBox checkBox = new JCheckBox();
+                checkBox.setSelected(value != null && Boolean.parseBoolean(value.toString()));
+                return checkBox;
+            }
+        });
+
+        unitTable.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(new JCheckBox()));
+
         unitTable.revalidate();
         unitTable.repaint();
     }
