@@ -56,13 +56,14 @@ public class unitPage extends JPanel{
     public void populateTable() {
         ArrayList<Unit> units = UnitManager.getInstance().getUnits();
 
-        String[][] data = new String[units.size()][3];
-        String[] columnNames = {"Id","Type","Enhet navn"};
+        String[][] data = new String[units.size()][4];
+        String[] columnNames = {"Id","Type","Enhet navn","Status"};
 
         for (int i = 0; i < units.size(); i++) {
             data[i][0] = String.valueOf(units.get(i).getId());
             data[i][1] = units.get(i).getType();
             data[i][2] = units.get(i).getName();
+            data[i][3] = String.valueOf(units.get(i).getStatus());
         }
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
