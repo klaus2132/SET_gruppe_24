@@ -10,7 +10,6 @@ public class shortcutsPage extends JPanel {
     private JButton btnShortcut2;
     private JButton btnShortcut3;
     private JButton ecoModeButton;
-    private JButton createSnarvei;
 
     public shortcutsPage (JFrame parent) {
         setLayout(new BorderLayout());
