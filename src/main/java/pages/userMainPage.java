@@ -27,7 +27,7 @@ public class userMainPage extends JPanel{
         //åpner unit page
         enheterButton.addActionListener(e -> {
             if (parent instanceof mainFrame) {
-                ((mainFrame) parent).showPage("Unit Page");
+                ((mainFrame) parent).showPage("User Unit Page");
             }
         });
 

@@ -16,7 +16,7 @@
         </constraints>
         <properties>
           <font size="22"/>
-          <foreground color="-16775451"/>
+          <foreground color="-16777216"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
           <text value="Velkommen admin"/>

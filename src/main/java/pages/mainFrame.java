@@ -1,16 +1,13 @@
 package pages;
-
 import models.Unit;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.Stack;
 
 public class mainFrame extends JFrame {
     private final Stack<String> pageHistory = new Stack<>();
     private unitPage unitPage;
+    private userUnitPage userUnitPage;
 
     public mainFrame() {
         setTitle("Alian Maid");
@@ -24,6 +21,7 @@ public class mainFrame extends JFrame {
         unitPage = new unitPage(this);
         JPanel shortcutsPage = new shortcutsPage(this);
         JPanel addUnitPage = new addUnitPage(this);
+        userUnitPage = new userUnitPage(this);
 
         add(login, "Login");
         add(adminMainPage, "Admin Page");
@@ -31,7 +29,7 @@ public class mainFrame extends JFrame {
         add(unitPage, "Unit Page");
         add(shortcutsPage, "Shortcut Page");
         add(addUnitPage, "Add Unit Page");
-
+        add(userUnitPage, "User Unit Page");
 
         showPage("Login");
     }
@@ -45,7 +43,6 @@ public class mainFrame extends JFrame {
     //hvis en side og legge til den riktige siden i historien
     public void showPage(String pageName) {
         CardLayout cl = (CardLayout) getContentPane().getLayout();
-
         //bare legg til hvis siden ikke er der allerede og hvis historen er tom
         if (pageHistory.isEmpty() || !pageHistory.peek().equals(pageName)) {
             pageHistory.push(pageName);
@@ -53,9 +50,11 @@ public class mainFrame extends JFrame {
         }
         cl.show(getContentPane(), pageName);
         System.out.println("Navigerte side: " + pageName);
-
+        //oppdaterer tabellen
         if(pageName.equals("Unit Page")){
             unitPage.populateTable();
+        }else if(pageName.equals("User Unit Page")){
+            userUnitPage.populateTable();
         }
     }
 
@@ -77,7 +76,4 @@ public class mainFrame extends JFrame {
             System.out.println("Er ikke mulig å gå lenger bak");
         }
     }
-
-    public unitPage getUnitPage(){return unitPage;}
-
 }

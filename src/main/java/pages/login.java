@@ -1,9 +1,6 @@
 package pages;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class login extends JPanel {
     private JButton btnUser;
@@ -13,19 +10,23 @@ public class login extends JPanel {
     public login(JFrame parent) {
         setLayout(new BorderLayout());
         add(loginpanel);
+
+        //admin siden
         btnUser.addActionListener(e -> {navigateToUserPage(parent);});
+
+        //user siden
         btnAdmin.addActionListener(e -> {navigateToAdminPage(parent);});
     }
 
 
-    public void navigateToUserPage(JFrame parent){
-        if(parent instanceof mainFrame){
-            ((mainFrame) parent).showPage("User Page");
-        }
-    }
     public void navigateToAdminPage(JFrame parent){
         if(parent instanceof mainFrame){
             ((mainFrame) parent).showPage("Admin Page");
+        }
+    }
+    public void navigateToUserPage(JFrame parent){
+        if(parent instanceof mainFrame){
+            ((mainFrame) parent).showPage("User Page");
         }
     }
 }

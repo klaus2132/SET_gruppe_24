@@ -5,8 +5,6 @@ public class Main {
     public static void main(String[] args) {
         System.out.printf("Hello world");
 
-
-
         Light livingRoomLight = new Light("Living Room Light", 75, "Warm White");
         Vacuum kitchenVacuum = new Vacuum("Kitchen Vacuum", 50);
         SecurityCamera backyardCamera = new SecurityCamera("Backyard camera");
