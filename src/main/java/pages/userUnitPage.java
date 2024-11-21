@@ -39,7 +39,7 @@ public class userUnitPage extends JPanel{
         ArrayList<Unit> units = UnitManager.getInstance().getUnits();
 
         String[][] data = new String[units.size()][4];
-        String[] columnNames = {"Id","Type","Enhet navn","Status"};
+        String[] columnNames = {"Id","Type","Enhet navn","Av/På"};
 
         for (int i = 0; i < units.size(); i++) {
             data[i][0] = String.valueOf(units.get(i).getId());
