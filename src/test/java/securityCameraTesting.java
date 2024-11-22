@@ -13,7 +13,7 @@ public class securityCameraTesting {
     }
 
     @Test
-    @DisplayName("Light konstruktør test")
+    @DisplayName("konstruktør test")
     public void testConstructor() {
         Assertions.assertNotNull(securityCamera, "Sikkerhets kamera burde være lagd");
         Assertions.assertEquals("Test Sikkerhets kamera", securityCamera.getName(), "Navnet skal matche");
