@@ -74,6 +74,7 @@ public class addUnitPage extends JPanel {
             }
         });
     }
+
     private void createUnit() {
         try {
             String selectedType = (String) unitType.getSelectedItem();

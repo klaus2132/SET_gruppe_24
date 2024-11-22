@@ -131,6 +131,8 @@ public class editUnitPage extends JPanel{
 
                 int temperature = Integer.parseInt(temperatureText);
                 ((Thermostat) unitToEdit).setTemperature(temperature);
+            } else if (selectedType.equals("Sikkerhets kamera") && unitToEdit instanceof SecurityCamera) {
+
             } else {
                 throw new IllegalArgumentException("Ugyldig enhetstype eller enhetstype samsvarer ikke med valgt enhet.");
             }
